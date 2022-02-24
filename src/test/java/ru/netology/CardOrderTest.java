@@ -37,15 +37,38 @@ public class CardOrderTest {
     }
 
     @Test
-    public void shouldSendForm() throws InterruptedException {
+    public void shouldSendForm() {
         driver.get("http://localhost:9999/");
-        Thread.sleep(5000);
-        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Валерия");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иванова-Левина Ольга");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79384615869");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
         driver.findElement(By.cssSelector("button")).click();
         String actual = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim();
         String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSendFormIfLatinLettersInName() {
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ivanova Anna");
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79384615869");
+        driver.findElement(By.cssSelector(".checkbox__box")).click();
+        driver.findElement(By.cssSelector("button")).click();
+        String actual = driver.findElement(By.cssSelector(".input__sub")).getText().trim();
+        String expected = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSendFormIfSymbolsInName() {
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("&*$%");
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79384615869");
+        driver.findElement(By.cssSelector(".checkbox__box")).click();
+        driver.findElement(By.cssSelector("button")).click();
+        String actual = driver.findElement(By.cssSelector(".input__sub")).getText().trim();
+        String expected = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
         assertEquals(expected, actual);
     }
 
