@@ -171,41 +171,41 @@ public class CardOrderTest {
 
 
 
-//    @Test
-//    public void shouldNotSendFormIfOneLetterInName() {
-//        driver.get("http://localhost:9999/");
-//        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("И");
-//        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79384615869");
-//        driver.findElement(By.cssSelector(".checkbox__box")).click();
-//        driver.findElement(By.cssSelector("button")).click();
-//        String actual = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim();
-//        String expected = "Фамилия и имя\nИмя и Фамилия указаные неверно. Значение поля не может быть короче 2 символов.";
-//        assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    public void shouldNotSendFormIfMoreThanSeventyLettersInName() {
-//        driver.get("http://localhost:9999/");
-//        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иоадыжфшутснвлфьыосладм ровлаыдвлаьморсиивлыоооооо ооооооооодддддддддды");
-//        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79384615869");
-//        driver.findElement(By.cssSelector(".checkbox__box")).click();
-//        driver.findElement(By.cssSelector("button")).click();
-//        String actual = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim();
-//        String expected = "Фамилия и имя\nИмя и Фамилия указаные неверно. Значение поля не может быть длиннее 50 символов.";
-//        assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    public void shouldSendFormIfNameWithЁ() {
-//        driver.get("http://localhost:9999/");
-//        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Лёвин Алексей");
-//        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79384615869");
-//        driver.findElement(By.cssSelector(".checkbox__box")).click();
-//        driver.findElement(By.cssSelector("button")).click();
-//        String actual = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText().trim();
-//        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
-//        assertEquals(expected, actual);
-//    }
+    @Test
+    public void shouldNotSendFormIfOneLetterInName() {
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("И");
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79384615869");
+        driver.findElement(By.cssSelector(".checkbox__box")).click();
+        driver.findElement(By.cssSelector("button")).click();
+        String actual = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim();
+        String expected = "Фамилия и имя\nИмя и Фамилия указаные неверно. Значение поля не может быть короче 2 символов.";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSendFormIfMoreThanSeventyLettersInName() {
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иоадыжфшутснвлфьыосладм ровлаыдвлаьморсиивлыоооооо ооооооооодддддддддды");
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79384615869");
+        driver.findElement(By.cssSelector(".checkbox__box")).click();
+        driver.findElement(By.cssSelector("button")).click();
+        String actual = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim();
+        String expected = "Фамилия и имя\nИмя и Фамилия указаные неверно. Значение поля не может быть длиннее 50 символов.";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSendFormIfNameWithЁ() {
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Лёвин Алексей");
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79384615869");
+        driver.findElement(By.cssSelector(".checkbox__box")).click();
+        driver.findElement(By.cssSelector("button")).click();
+        String actual = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText().trim();
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, actual);
+    }
 
 
 }
